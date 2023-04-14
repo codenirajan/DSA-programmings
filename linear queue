@@ -1,0 +1,64 @@
+implementation of queue using linear array
+#include <stdio.h>
+#define n 10
+
+struct queue
+{
+    int front,back;
+    char arr[n];
+    
+};
+void enqueue(struct queue *q2);
+void dequeue(struct queue *q2);
+
+void enqueue(struct queue *q2)
+{
+    if(q2->front!=n-1)
+    {
+        q2->front++;
+        printf("enter the character to enqueue\n");
+        getchar();
+        scanf("%c",&q2->arr[q2->front]);
+        printf("%c is enqueue\n",q2->arr[q2->front]);
+        if(q2->back==-1)
+        q2->back++;
+    }
+    else
+    printf("the queue is full\n");
+    
+}
+void dequeue(struct queue *q2)
+{
+    if(q2->back<=q2->front)
+    {
+        printf("%c is dequeued \n",q2->arr[q2->back]);
+        q2->back++;
+    }
+    else
+    printf("dequeued not possible \n");
+}
+int main()
+{
+    struct queue q1;
+    q1.front=-1;
+    q1.back=-1;
+    int i,a=0;
+    
+    while(a!=3)
+    {
+        printf("enter 1 to enqueue 2 to dequeue and 3 to exit\n");
+        scanf("%d",&a);
+        
+        switch(a)
+        {
+            case 1:
+            enqueue(&q1);
+            break;
+            
+            case 2:
+            dequeue(&q1);
+            break;
+        }
+    }
+    return 0;
+}
