@@ -13,15 +13,15 @@ void dequeue(struct queue *q2);
 
 void enqueue(struct queue *q2)
 {
-    if(q2->front!=n-1)
+    if(q2->back!=n-1)
     {
-        q2->front++;
+        q2->back++;
         printf("enter the character to enqueue\n");
         getchar();
-        scanf("%c",&q2->arr[q2->front]);
-        printf("%c is enqueue\n",q2->arr[q2->front]);
-        if(q2->back==-1)
-        q2->back++;
+        scanf("%c",&q2->arr[q2->back]);
+        printf("%c is enqueue\n",q2->arr[q2->back]);
+        if(q2->front==-1)
+        q2->front++;
     }
     else
     printf("the queue is full\n");
@@ -29,10 +29,10 @@ void enqueue(struct queue *q2)
 }
 void dequeue(struct queue *q2)
 {
-    if(q2->back<=q2->front)
+    if(q2->front<=q2->back)
     {
-        printf("%c is dequeued \n",q2->arr[q2->back]);
-        q2->back++;
+        printf("%c is dequeued \n",q2->arr[q2->front]);
+        q2->front++;
     }
     else
     printf("dequeued not possible \n");
@@ -40,8 +40,8 @@ void dequeue(struct queue *q2)
 int main()
 {
     struct queue q1;
-    q1.front=-1;
     q1.back=-1;
+    q1.front=-1;
     int i,a=0;
     
     while(a!=3)
